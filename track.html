@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تتبع الطلب | Azra Market</title>
+  <style>
+    body { direction: rtl; font-family: Arial; padding: 30px; background-color: #f9f9f9; }
+    h2 { color: #8e44ad; }
+    input { padding: 10px; width: 100%; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
+    button { background-color: #8e44ad; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background-color: #6d319b; }
+    .status-box { background: white; padding: 20px; border-radius: 10px; margin-top: 20px; box-shadow: 0 0 5px #ccc; }
+  </style>
+</head>
+<body>
+  <h2>تتبع الطلب</h2>
+  <input type="text" id="orderId" placeholder="مثال: AZ123456">
+  <button onclick="trackOrder()">تتبع</button>
+  <div class="status-box" id="result" style="display:none;">
+    <h3>حالة الطلب:</h3>
+    <p id="status">جاري المعالجة...</p>
+    <h4>مراحل الطلب:</h4>
+    <table border="1" width="100%" style="border-collapse: collapse; text-align: center;">
+      <tr><th>المرحلة</th><th>الحالة</th></tr>
+      <tr><td>استلام الطلب</td><td>✓</td></tr>
+      <tr><td>قيد التجهيز</td><td>✓</td></tr>
+      <tr><td>تم الشحن</td><td>✓</td></tr>
+      <tr><td>في الطريق</td><td>✓</td></tr>
+      <tr><td>تم التسليم</td><td id="final">✗</td></tr>
+    </table>
+  </div>
+  <p><a href="index.html">العودة إلى الرئيسية</a></p>
+  <script>
+    function trackOrder() {
+      const id = document.getElementById('orderId').value.trim();
+      const result = document.getElementById('result');
+      const status = document.getElementById('status');
+      const final = document.getElementById('final');
+      if (id === "") {
+        alert("يرجى إدخال رقم الطلب.");
+        return;
+      }
+      status.innerText = "تم شحن الطلب وهو في الطريق إليك.";
+      final.innerText = "✗";
+      result.style.display = "block";
+    }
+  </script>
+</body>
+</html>
